@@ -1,0 +1,54 @@
+<!--
+Sierra is working on this
+
+This server must use HTTPS.
+The web application should support a separate physician portal that
+allows a physician to register an account using a separate registration page
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Physician Registration</title>
+    <link href="registration.css" rel="stylesheet">
+    <script src="registration.js" defer></script>
+</head>
+
+<body>
+    <div class="form">
+        <h2>Physician Registration</h2>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email">
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="Password">
+        </div>
+
+        <div>
+            <label for="passwordConfirm">Confirm Password</label>
+            <input type="password" id="passwordConfirm" name="Confirm Password">
+        </div>
+
+        <div>
+            <label for="addDevice">Add Device</label>
+            <input type="number" id="addDevice" name="Add Device"> <!--COME BACK, how do you identify device?-->
+        </div>
+
+        <div id="formErrors">
+        </div>
+
+        <div>
+            <input type="submit" id="submit" value="Register">
+        </div>
+    </div>
+
+</body>
+
+</html>

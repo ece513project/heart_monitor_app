@@ -1,0 +1,57 @@
+/* For index page */
+
+div {padding-left:16px}
+
+.container {padding:0.01em 16px}
+
+.blue {color:#fff!important;background-color:#2196F3!important}
+
+.row-padding {padding:0 8px}
+
+.third {float:left;width:27%}
+
+
+/* For registration pages */
+
+div.form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #aaa;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+div.form h2 {
+    text-align: center;
+}
+
+#formErrors {
+    display: none;
+    color: red;
+}
+
+input[type="text"],
+input[type="number"], /* COME BACK, added for device input */
+input[type="email"],
+input[type="password"] {
+    border: 1px solid #aaa;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
