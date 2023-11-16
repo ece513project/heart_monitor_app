@@ -12,7 +12,6 @@ div {padding-left:16px}
 
 
 /* For registration pages */
-
 div.form {
     max-width: 400px;
     margin: 0 auto;
@@ -34,8 +33,7 @@ div.form h2 {
     color: red;
 }
 
-input[type="text"],
-input[type="number"], /* COME BACK, added for device input */
+input[type="number"],
 input[type="email"],
 input[type="password"] {
     border: 1px solid #aaa;

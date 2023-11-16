@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.form');
-    const addDevice = document.getElementById('addDevice');
+    const DeviceID = document.getElementById('DeviceID');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     const passwordConfirm = document.getElementById('passwordConfirm');
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Reset error messages and styles
         formErrors.style.display = 'none';
-        addDevice.style.border = '1px solid #aaa';
+        DeviceID.style.border = '1px solid #aaa';
         email.style.border = '1px solid #aaa';
         password.style.border = '1px solid #aaa';
         passwordConfirm.style.border = '1px solid #aaa';
@@ -55,12 +55,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add Device Validation
         // COME BACK change this if statement so that it makes sense
-        if (addDevice.value.trim() === '') {
+        if (DeviceID.value.trim() === '') {
             errorMessages += "<li>No device entered.</li>";
-            addDevice.style.border = '2px solid red';
-        } else if (addDevice.value.trim().length > 10) {
+            DeviceID.style.border = '2px solid red';
+
+            //DeviceID.style.border = '1px solid #aaa';//take this out later if it doesnt work
+
+        } else if (DeviceID.value.trim().length > 10) {
             errorMessages += "<li>Device entry length should not exceed 10 digits.</li>";
-            addDevice.style.border = '2px solid red';
+            DeviceID.style.border = '2px solid red';
         }
 
         errorMessages += "</ul>";

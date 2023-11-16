@@ -1,4 +1,5 @@
 <!--
+Completed except for HTTPS
 Sierra is working on this
 
 This server must use HTTPS.
@@ -6,14 +7,13 @@ The web application should support a separate physician portal that
 allows a physician to register an account using a separate registration page
 -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Physician Registration</title>
-    <link href="registration.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <script src="registration.js" defer></script>
 </head>
 
@@ -27,7 +27,7 @@ allows a physician to register an account using a separate registration page
         </div>
 
         <div>
-            <label for="password">Password</label>
+            <label for="password">Strong Password</label>
             <input type="password" id="password" name="Password">
         </div>
 
@@ -37,8 +37,8 @@ allows a physician to register an account using a separate registration page
         </div>
 
         <div>
-            <label for="addDevice">Add Device</label>
-            <input type="number" id="addDevice" name="Add Device"> <!--COME BACK, how do you identify device?-->
+            <label for="DeviceID">Device ID</label>
+            <input type="number" id="DeviceID" name="Device ID">
         </div>
 
         <div id="formErrors">
