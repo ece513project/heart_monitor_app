@@ -4,7 +4,7 @@ div {padding-left:16px}
 
 .container {padding:0.01em 16px}
 
-.blue {color:#fff!important;background-color:#2196F3!important}
+.blue {color:#fff!important;background-color:#f39821!important}
 
 .row-padding {padding:0 8px}
 
@@ -43,7 +43,7 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #269269;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -51,5 +51,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #1c6d4e;
 }

@@ -13,11 +13,52 @@ allows a physician to register an account using a separate registration page
 <head>
     <meta charset="UTF-8">
     <title>Physician Registration</title>
-    <link href="stylesheets/style.css" rel="stylesheet">
-    <script src="javascripts/registration.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="stylesheets/style.css" rel="stylesheet"><!--Needs to be changed back to stylesheets/style.css-->
+    <script src="javascripts/registration.js" defer></script><!--Needs to be changed back to javascripts/registration.js-->
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: rgb(83, 77, 187);
+            color: white;
+        }
+
+        .form {
+            margin-top: 50px; /* Adjust the margin as needed */
+        }
+    </style>
 </head>
 
 <body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#login">Login</a>
+    </div>
+<br>
     <div class="form">
         <h2>Physician Registration</h2>
 
