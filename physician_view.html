@@ -2,15 +2,15 @@
 
 Needs to be HTTPS
 The web application supports a weekly summary view and detailed daily view.
-The weekly summary view will show the user’s average, minimum, and maximum 
+The weekly summary view will show the user’s average, minimum, and maximum
 heart rate in the past 7 days.
-The detailed daily view (for a selected day) will plot heart rate and blood 
+The detailed daily view (for a selected day) will plot heart rate and blood
 oxygen saturation level readings for the selected day on separate charts.
-The horizontal axis for the charts should be the time of day, and the vertical 
+The horizontal axis for the charts should be the time of day, and the vertical
 axis should be the measurement.
 The minimum and maximum values should be visually indicated on the chart.
 Third-party plotting libraries can be used for the plots.
-The web application should allow the user to define the time-of-day range and 
+The web application should allow the user to define the time-of-day range and
 frequency at which measurements will be requested.
 
 The physician portal has a patient view, a patient summary view, and a patient's detailed daily view.
@@ -19,3 +19,183 @@ The physician will be able to select a patient to view the patient's summary vie
 The patient's summary view is similar to the weekly summary view for a user, but also includes controls that allow the physician to adjust the frequency of measurement.
 The patient's detailed day view will present the same information as the detailed day view for the user.
 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physician Portal</title>
+
+    <!-- Include necessary CSS and JavaScript libraries -->
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        div {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+            li:hover {
+                background-color: #ddd;
+            }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #2980b9;
+            }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        select,
+        input[type="date"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Physician Portal</h1>
+
+    <!-- All-Patient View -->
+    <div>
+        <h2>All-Patient View</h2>
+        <ul id="patientList"></ul>
+    </div>
+
+    <!-- Patient Summary View -->
+    <div id="patientSummaryView" style="display: none;">
+        <h2>Patient Summary View</h2>
+        <p>Patient: <span id="selectedPatientName"></span></p>
+        <p>Average Heart Rate: <span id="patientAverageHeartRate"></span></p>
+        <p>Minimum Heart Rate: <span id="patientMinHeartRate"></span></p>
+        <p>Maximum Heart Rate: <span id="patientMaxHeartRate"></span></p>
+
+        <label for="measurementFrequency">Measurement Frequency: </label>
+        <select id="measurementFrequency">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <button onclick="updatePatientSummary()">Update Summary</button>
+    </div>
+
+    <!-- Patient Detailed Daily View -->
+    <div id="patientDetailedDailyView" style="display: none;">
+        <h2>Patient Detailed Daily View</h2>
+        <label for="selectedPatientDate">Select a Date: </label>
+        <input type="date" id="selectedPatientDate">
+        <button onclick="loadPatientDetailedView()">Load Detailed View</button>
+
+        <!-- Placeholder for charts -->
+        <div>
+            <canvas id="patientHeartRateChart" width="400" height="200"></canvas>
+            <canvas id="patientOxygenSaturationChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Add additional HTML content here -->
+
+    <script>
+        // JavaScript code for handling patient selection and updating views goes here
+
+        // Sample patient data (replace with actual data)
+        const patients = [
+            { name: "Patient1", averageHeartRate: 75, minHeartRate: 60, maxHeartRate: 90 },
+            { name: "Patient2", averageHeartRate: 80, minHeartRate: 65, maxHeartRate: 95 },
+            // Add more patients as needed
+        ];
+
+        // Populate the patient list
+        const patientList = document.getElementById("patientList");
+        patients.forEach(patient => {
+            const listItem = document.createElement("li");
+            listItem.textContent = patient.name;
+            listItem.addEventListener("click", () => selectPatient(patient));
+            patientList.appendChild(listItem);
+        });
+
+        function selectPatient(patient) {
+            // Update the selected patient and show relevant views
+            document.getElementById("selectedPatientName").textContent = patient.name;
+            document.getElementById("patientAverageHeartRate").textContent = patient.averageHeartRate;
+            document.getElementById("patientMinHeartRate").textContent = patient.minHeartRate;
+            document.getElementById("patientMaxHeartRate").textContent = patient.maxHeartRate;
+
+            document.getElementById("patientSummaryView").style.display = "block";
+            document.getElementById("patientDetailedDailyView").style.display = "none";
+        }
+
+        function updatePatientSummary() {
+            // Handle updating patient summary based on selected frequency
+            // may need to fetch data and update the UI accordingly
+        }
+
+        function loadPatientDetailedView() {
+            // Fetch data for the selected patient and date, update charts
+            // Use a third-party library like Chart.js to plot the charts
+            // Update the UI to show the detailed daily view
+            document.getElementById("patientSummaryView").style.display = "none";
+            document.getElementById("patientDetailedDailyView").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

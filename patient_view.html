@@ -1,14 +1,109 @@
 <!-- Julia is working on this
 
 The web application supports a weekly summary view and detailed daily view.
-The weekly summary view will show the user’s average, minimum, and maximum 
+The weekly summary view will show the user’s average, minimum, and maximum
 heart rate in the past 7 days.
-The detailed daily view (for a selected day) will plot heart rate and blood 
+The detailed daily view (for a selected day) will plot heart rate and blood
 oxygen saturation level readings for the selected day on separate charts.
-The horizontal axis for the charts should be the time of day, and the vertical 
+The horizontal axis for the charts should be the time of day, and the vertical
 axis should be the measurement.
 The minimum and maximum values should be visually indicated on the chart.
 Third-party plotting libraries can be used for the plots.
-The web application should allow the user to define the time-of-day range and 
+The web application should allow the user to define the time-of-day range and
 frequency at which measurements will be requested.
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient View</title>
+
+    <!-- Include necessary CSS and JavaScript libraries -->
+    <link rel="stylesheet" href="path/to/chartjs.css">
+    <script src="path/to/chartjs.bundle.js"></script>
+
+    <style>
+        /* Add styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        div {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        select, input[type="date"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        canvas {
+            margin-top: 20px;
+    </style>
+</head>
+<body>
+
+    <h1>Patient View</h1>
+
+    <!-- Weekly Summary View -->
+    <div>
+        <h2>Weekly Summary</h2>
+        <p>Average Heart Rate: <span id="averageHeartRate"></span></p>
+        <p>Minimum Heart Rate: <span id="minHeartRate"></span></p>
+        <p>Maximum Heart Rate: <span id="maxHeartRate"></span></p>
+    </div>
+
+    <!-- Detailed Daily View -->
+    <div>
+        <h2>Detailed Daily View</h2>
+        <label for="selectedDate">Select a Date: </label>
+        <input type="date" id="selectedDate">
+        <button onclick="loadDetailedView()">Load Detailed View</button>
+
+        <!-- Placeholder for charts -->
+        <div>
+            <canvas id="heartRateChart" width="400" height="200"></canvas>
+            <canvas id="oxygenSaturationChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- additional HTML content here -->
+
+    <script>
+        // JavaScript code for handling data and updating charts goes here
+
+        function loadDetailedView() {
+            // Fetch data for the selected date and update charts
+            // Use a third-party library like Chart.js to plot the charts
+        }
+    </script>
+</body>
+</html>
