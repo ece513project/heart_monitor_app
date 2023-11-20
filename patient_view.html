@@ -17,6 +17,8 @@ frequency at which measurements will be requested.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="stylesheets/style.css" rel="stylesheet"> <!--Needs to be changed back to stylesheets/style.css-->
+    <script src="javascripts/registration.js" defer></script><!--Needs to be changed back to javascripts/registration.js-->
     <title>Patient View</title>
 
     <!-- Include necessary CSS and JavaScript libraries -->
@@ -67,9 +69,41 @@ frequency at which measurements will be requested.
 
         canvas {
             margin-top: 20px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color:  rgb(83, 77, 187);
+            color: white;
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <a class="active" href="#patient_view">Patient View</a>
+        <a href="http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/user_account_info.html">Account Info</a>
+        <a href="http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/update_account.html">Update Account</a>
+        <a href="http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/index.html">Log Out</a>  <!-- Change this so that it logs user out -->
+    </div>
 
     <h1>Patient View</h1>
 
