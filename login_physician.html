@@ -1,7 +1,6 @@
 
 <!-- Sierra is working on this
     Needs to be adjusted so that it checks if the email/password exist
-    Must include login for physicians and patients
     -->
 
     <!DOCTYPE html>
@@ -48,14 +47,15 @@
 <body>
 
     <div class="topnav">
-        <a href="http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/index.html">Home</a>
-        <a class="active" href="#login">Login</a>
-        <a href="http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/registration_patient.html">New Patient Registration</a>
-        <a href="http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/registration_physician.html">New Physician Registration</a>
+        <a href="/index.html">Home</a>
+        <a href="/login_patient.html">Patient Login</a>
+        <a class="active" href="/login_physician.html">Physician Login</a>
+        <a href="/registration_patient.html">New Patient Registration</a>
+        <a href="/registration_physician.html">New Physician Registration</a>
     </div>
 <br>
     <div class="form">
-        <h2>Patient and Physician Login</h2>
+        <h2>Physician Login</h2>
 
         <div>
             <label for="email">Email</label>
