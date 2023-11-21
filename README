@@ -4,3 +4,29 @@ Links to your server, the pitch, and demonstration videos.
 Login credentials for an existing user account with recently collected data
 ECE 513 only: Login credentials for a physician account
 */
+
+Link to server:
+http://ec2-3-137-223-106.us-east-2.compute.amazonaws.com:3000/index.html
+
+The pitch:
+"Keeping track of your heart rate can give you insight into your fitness level, heart health and emotional health, Dr. Ronesh Sinha, M.D. says. 'Many people are walking around with a resting heart rate that is too high, due to factors such as too much caffeine, dehydration, inactivity and persistent stress. Those extra heart beats over time can be taking years off your life.'
+
+"Dr. Sinha recommends tracking your heart rate as well as keeping a journal of which activities are causing higher heart rates. Then use that information to make changes, set priorities and move toward a healthier life."
+
+(From the article "Get to Know Your Heart Rate: It Might Save Your Life" on Sutter Health website.
+https://www.sutterhealth.org/health/heart/get-to-know-your-heart-rate-it-might-save-your-life#:~:text=Track%20Your%20Heart%20Rate,dehydration%2C%20inactivity%20and%20persistent%20stress.)
+
+The Heart Track application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation
+levels. The device will periodically remind users to take heart rate and blood oxygen saturation level
+measurements.These measurements will then be transmitted to a web application through which users and
+physicians can view the data via desktop, tablet or mobile device.
+
+Demonstration video:
+
+Physician Login
+Email: drpepper@gmail.com
+Password: behealthy123!
+
+Patient Login
+Email: diabetes_sucks@gmail.com
+Password: Fun!nth3sun513

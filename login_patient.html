@@ -72,8 +72,13 @@
         </div>
 
         <div>
-            <input type="submit" id="submit" value="Submit">
+            <input type="submit" id="submit" value="Submit" onclick="redirectToPatientView()"> 
         </div>
+        <script>
+            function redirectToPatientView() {
+                window.location.href = 'patient_view.html';
+            }
+        </script>
     </div>
 
 </body>
