@@ -34,7 +34,7 @@ router.post('/weekly_patient_data', function (req, res) {
     console.log(end);
     console.log(start);
 
-    PARTICLE_DB.find({
+    particle_db.find({
         $and: [
             {
                 deviceID: req.body.device_sn
@@ -60,7 +60,7 @@ router.post('/daily_patient_data', function (req, res) {
     console.log(end);
     console.log(start);
 
-    PARTICLE_DB.find({
+    particle_db.find({
         $and: [
             {
                 deviceID: req.body.device_sn
@@ -99,7 +99,7 @@ router.post("/particle_data", function (req, res) {
         SPO2_Value = req.body.SPO2;
     }
 
-    const newParticle = new PARTICLE_DB({
+    const newParticle = new particle_db({
         deviceID: req.body.coreid,
         HR: HR_Value,
         SPO2: SPO2_Value,
