@@ -1,9 +1,4 @@
-
-<!-- Sierra is working on this
-    Needs to be adjusted so that it checks if the email/password exist
-    -->
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -41,9 +36,62 @@
                     background-color: rgb(83, 77, 187);
                     color: white;
                 }
+
+        .form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+            .form h2 {
+                text-align: center;
+                color: rgb(83, 77, 187);
+            }
+
+            .form label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .form input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .form button {
+                background-color: rgb(83, 77, 187);
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+        #formErrors,
+        #rxData {
+            color: red;
+            text-align: center;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .output-container {
+            text-align: center;
+            margin: 2vh auto;
+        }
     </style>
 </head>
-
 
 <body>
 
@@ -54,7 +102,8 @@
         <a href="/registration_patient.html">New Patient Registration</a>
         <a href="/registration_physician.html">New Physician Registration</a>
     </div>
-<br>
+
+    <br>
     <div class="form">
         <h2>Physician Login</h2>
 
@@ -68,14 +117,17 @@
             <input type="password" id="password" name="Password">
         </div>
 
-        <div id="formErrors">
-        </div>
+        <div id="formErrors"></div>
 
         <div>
             <input type="submit" id="submit" value="Submit">
         </div>
-    </div>
 
+    </div>
+    <div class="output-container">
+        <div id="formErrors"></div>
+        <div id="rxData"></div>
+    </div>
 </body>
 
 </html>

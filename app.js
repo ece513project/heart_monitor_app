@@ -5,10 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');     // Parses JSON in body
 
-var patientRouter = require('./routes/patient');
-var physicianRouter = require('./routes/physician');
+
+var physicianRouter = require('./routes/physicians');
 var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api');
+var patientRouter = require('./routes/patients');
+//var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -41,9 +42,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api', apiRouter);
-app.use('/patient', patientRouter);
-app.use('/physician', physicianRouter);
+//app.use('/api', apiRouter);
+app.use('/patients', patientRouter);
+app.use('/physicians', physicianRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -61,5 +62,5 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-app.listen(3000);
+//app.listen(3000);
 module.exports = app;

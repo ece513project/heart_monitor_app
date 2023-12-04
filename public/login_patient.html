@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/login_patient.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: rgb(83, 77, 187);
+                    color: white;
+                }
+
+        .form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+            .form h2 {
+                text-align: center;
+                color: rgb(83, 77, 187);
+            }
+
+            .form label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .form input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .form button {
+                background-color: rgb(83, 77, 187);
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+        #formErrors,
+        #rxData {
+            color: red;
+            text-align: center;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .output-container {
+            text-align: center;
+            margin: 2vh auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="/index.html">Home</a>
+        <a class="active" href="/login_patient.html">Patient Login</a>
+        <a href="/login_physician.html">Physician Login</a>
+        <a href="/registration_patient.html">New Patient Registration</a>
+        <a href="/registration_physician.html">New Physician Registration</a>
+    </div>
+
+    <br>
+    <div class="form">
+        <h2>Patient Login</h2>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email">
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="Password">
+        </div>
+
+        <div id="formErrors"></div>
+
+        <div>
+            <input type="submit" id="submit" value="Submit">
+        </div>
+        
+    </div>
+    <div class="output-container">
+        <div id="formErrors"></div>
+        <div id="rxData"></div>
+    </div>
+</body>
+
+</html>

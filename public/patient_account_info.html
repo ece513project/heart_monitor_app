@@ -1,4 +1,4 @@
-<!-- Patient account information page. Should allow user to select one of the registered 
+﻿<!-- Patient account information page. Should allow user to select one of the registered 
     physicians as their physician.
 -->
 
@@ -7,8 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href="stylesheets/style.css" rel="stylesheet"> <!--Needs to be changed back to stylesheets/style.css-->
-    <script src="javascripts/registration.js" defer></script><!--Needs to be changed back to javascripts/registration.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/patient_account.js" defer></script><!--Needs to be changed back to javascripts/registration.js-->
     <title>Account Info</title>
 
     <!-- Include necessary CSS and JavaScript libraries -->
@@ -26,14 +28,17 @@
 
         h1 {
             text-align: center;
-            color: #333;
+            color: rgb(83, 77, 187);
             padding: 20px;
             background-color: #fff;
             margin-bottom: 20px;
         }
-
+        p {
+            font-size: 1.17em;
+            font-weight: bolder;
+        }
         h2 {
-            color: #333;
+            color: rgb(83, 77, 187);
         }
 
         div {
@@ -85,37 +90,33 @@
 
     <h1>Account Info</h1>
 
-       <!-- Name -->
-       <div>
-        <h2>Name</h2>
-        <p>John Doe</p>
+    <!-- Name -->
+    <div>
+        <h2>First Name:</h2>
+        <p id="first_name"></p>
     </div>
-
+    <div>
+        <h2>Last Name:</h2>
+        <p id="last_name"></p>
+    </div>
     <!-- Email -->
     <div>
-        <h2>Email</h2>
-        <p>diabetes_sucks@gmail.com</p>
-    
+        <h2>Email:</h2>
+        <p id="email"></p>
+
     </div>
 
-     <!-- Password -->
-     <div>
-        <h2>Password</h2>
-        <p>Fun!nth3sun513</p>
-    
-    </div>
+    <!-- Physician -->
+    <div>
+        <h2>Physician:</h2>
+        <p id="physician"></p>
 
-     <!-- Physician -->
-     <div>
-        <h2>Physician</h2>
-        <p>Dr. Sahara Lough</p>
-    
     </div>
 
     <!-- Devices -->
     <div>
-        <h2>Device(s)</h2>
-        <p>Device 1: e00fce68023825797113632d</p>
+        <h2>Device:</h2>
+        <p id="device"></p>
     </div>
 </body>
 </html>

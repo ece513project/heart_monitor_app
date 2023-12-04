@@ -28,14 +28,12 @@ div.form h2 {
     text-align: center;
 }
 
-#formErrors {
-    display: none;
-    color: red;
-}
+
 
 input[type="number"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"]{
     border: 1px solid #aaa;
     width: 100%;
     padding: 5px;
@@ -52,4 +50,28 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #1c6d4e;
+}
+#formErrors {
+    color: red;
+    text-align: center;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#rxData {
+    color: green;
+    text-align: center;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.output-container {
+    text-align: center;
+    margin: 2vh auto;
 }
