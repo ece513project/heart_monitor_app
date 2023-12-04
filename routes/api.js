@@ -107,7 +107,7 @@ router.post("/particle_data", function (req, res) {
     });
     newParticle.save(function (err, device) {
         if (err) {
-            var errormsg = { "error": "zip and airQuality are required." }
+            var errormsg = { "error": "Error Saving Data." }
             res.status(400).send(errormsg);
         }
         else {
