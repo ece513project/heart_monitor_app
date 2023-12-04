@@ -1,4 +1,4 @@
-<!-- Julia is working on this
+﻿<!-- Julia is working on this
 
 Needs to be HTTPS
 The web application supports a weekly summary view and detailed daily view.
@@ -26,7 +26,8 @@ The patient's detailed day view will present the same information as the detaile
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physician Portal</title>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/patientview_physician.js"></script>
     <!-- Include necessary CSS and JavaScript libraries -->
 
 
@@ -40,14 +41,14 @@ The patient's detailed day view will present the same information as the detaile
 
         h1 {
             text-align: center;
-            color: #333;
+            color: rgb(83, 77, 187);
             padding: 20px;
             background-color: #fff;
             margin-bottom: 20px;
         }
 
         h2 {
-            color: #333;
+            color: rgb(83, 77, 187);
         }
 
         div {
@@ -112,33 +113,34 @@ The patient's detailed day view will present the same information as the detaile
             background-color: #333;
         }
 
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
 
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
 
-        .topnav a.active {
-            background-color:  rgb(83, 77, 187);
-            color: white;
-        }
+                .topnav a.active {
+                    background-color: rgb(83, 77, 187);
+                    color: white;
+                }
     </style>
 </head>
 
 <body>
      <!-- Navigation Bar -->
-     <div class="topnav">
+    <div class="topnav">
         <a class="active" href="#physician_view">Physician View</a>
+        <a  href="/allpatientPhysician.html">All Patient View</a>
         <a href="/physician_account_info.html">Account Info</a>
-        <a href="/physician_update_account.html">Update Account</a>
+        <a href="/update_account_physician.html">Update Account</a>
         <a href="/index.html">Log Out</a>  <!-- Change this so that it logs user out -->
     </div>
 
@@ -146,12 +148,12 @@ The patient's detailed day view will present the same information as the detaile
 
     <!-- All-Patient View -->
     <div>
-        <h2>All-Patient View</h2>
-        <ul id="patientList"></ul>
-    </div>
+        <h2>Select a Patient</h2>
+        <select id="select_patient"></select>
+</div>
 
     <!-- Patient Summary View -->
-    <div id="patientSummaryView" style="display: none;">
+    <div id="patientSummaryView">
         <h2>Patient Summary View</h2>
         <p>Patient: <span id="selectedPatientName"></span></p>
         <p>Average Heart Rate: <span id="patientAverageHeartRate"></span></p>
@@ -165,15 +167,15 @@ The patient's detailed day view will present the same information as the detaile
             <!-- Add more options as needed -->
         </select>
 
-        <button onclick="updatePatientSummary()">Update Summary</button>
+        <button id="updateSummary">Update Summary</button>
     </div>
 
     <!-- Patient Detailed Daily View -->
-    <div id="patientDetailedDailyView" style="display: none;">
+    <div id="patientDetailedDailyView" >
         <h2>Patient Detailed Daily View</h2>
         <label for="selectedPatientDate">Select a Date: </label>
         <input type="date" id="selectedPatientDate">
-        <button onclick="loadPatientDetailedView()">Load Detailed View</button>
+        <button id="loadDetailedView">Load Detailed View</button>
 
         <!-- Placeholder for charts -->
         <div>
@@ -184,49 +186,7 @@ The patient's detailed day view will present the same information as the detaile
 
     <!-- Add additional HTML content here -->
 
-    <script>
-        // JavaScript code for handling patient selection and updating views goes here
-
-        // Sample patient data (replace with actual data)
-        const patients = [
-            { name: "Patient1", averageHeartRate: 75, minHeartRate: 60, maxHeartRate: 90 },
-            { name: "Patient2", averageHeartRate: 80, minHeartRate: 65, maxHeartRate: 95 },
-            // Add more patients as needed
-        ];
-
-        // Populate the patient list
-        const patientList = document.getElementById("patientList");
-        patients.forEach(patient => {
-            const listItem = document.createElement("li");
-            listItem.textContent = patient.name;
-            listItem.addEventListener("click", () => selectPatient(patient));
-            patientList.appendChild(listItem);
-        });
-
-        function selectPatient(patient) {
-            // Update the selected patient and show relevant views
-            document.getElementById("selectedPatientName").textContent = patient.name;
-            document.getElementById("patientAverageHeartRate").textContent = patient.averageHeartRate;
-            document.getElementById("patientMinHeartRate").textContent = patient.minHeartRate;
-            document.getElementById("patientMaxHeartRate").textContent = patient.maxHeartRate;
-
-            document.getElementById("patientSummaryView").style.display = "block";
-            document.getElementById("patientDetailedDailyView").style.display = "none";
-        }
-
-        function updatePatientSummary() {
-            // Handle updating patient summary based on selected frequency
-            // may need to fetch data and update the UI accordingly
-        }
-
-        function loadPatientDetailedView() {
-            // Fetch data for the selected patient and date, update charts
-            // Use a third-party library like Chart.js to plot the charts
-            // Update the UI to show the detailed daily view
-            document.getElementById("patientSummaryView").style.display = "none";
-            document.getElementById("patientDetailedDailyView").style.display = "block";
-        }
-    </script>
+    
 </body>
 
 </html>

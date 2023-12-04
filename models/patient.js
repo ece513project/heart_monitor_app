@@ -5,10 +5,10 @@ const patientSchema = new db.Schema({
     last_name: String,
     email: String,
     password: String,
+    device: { type: String, default: "No Device" },
     lastAccess: { type: Date, default: Date.now },
-    physician: { type: String, default: "Physician 1" },
-    device_name: { type: String, default: "No Device" },
-    device_sn: { type: String, default: "No Device" }
+    physician: { type: String, default: "No Physician" },
+    
 });
 
 

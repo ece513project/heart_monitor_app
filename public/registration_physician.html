@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="stylesheets/style.css" rel="stylesheet"> <!--Needs to be changed back to stylesheets/style.css-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/registration_physician.js"></script><!--Needs to be changed back to javascripts/registration.js-->
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: rgb(83, 77, 187);
+                    color: white;
+                }
+
+        .form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+            .form h2 {
+                text-align: center;
+                color: rgb(83, 77, 187);
+            }
+
+            .form label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .form input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .form button {
+                background-color: rgb(83, 77, 187);
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+        #formErrors {
+            color: red;
+            text-align: center;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        #rxData {
+            color: green;
+            text-align: center;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .output-container {
+            text-align: center;
+            margin: 2vh auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="/index.html">Home</a>
+        <a href="/login_patient.html">Patient Login</a>
+        <a href="/login_physician.html">Physician Login</a>
+        <a href="/registration_patient.html">New Patient Registration</a>
+        <a class="active" href="#registration_physcian">New Physician Registration</a>
+
+    </div>
+
+    <br>
+    <div class="form">
+        <h2>Physician Registration</h2>
+        <div>
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name">
+        </div>
+        <div>
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div>
+            <label for="password">Strong Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div>
+            <label for="passwordConfirm">Confirm Password</label>
+            <input type="password" id="passwordConfirm" name="passwordConfirm">
+        </div>
+
+
+        <br />
+
+        <button id="btnCreate">Register</button>
+        <br />
+        
+    </div>
+
+
+    <div class="output-container">
+        <div id="formErrors"></div>
+        <div id="rxData"></div>
+    </div>
+
+</body>
+
+</html>

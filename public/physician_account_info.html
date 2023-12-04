@@ -1,4 +1,5 @@
-<!-- Physician account user page 
+﻿<!-- Patient account information page. Should allow user to select one of the registered
+    physicians as their physician.
 -->
 
 <!DOCTYPE html>
@@ -6,8 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="stylesheets/style.css" rel="stylesheet"> <!--Needs to be changed back to stylesheets/style.css-->
-    <script src="javascripts/registration.js" defer></script><!--Needs to be changed back to javascripts/registration.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/physician_account.js" defer></script><!--Needs to be changed back to javascripts/registration.js-->
     <title>Account Info</title>
 
     <!-- Include necessary CSS and JavaScript libraries -->
@@ -25,14 +28,19 @@
 
         h1 {
             text-align: center;
-            color: #333;
+            color: rgb(83, 77, 187);
             padding: 20px;
             background-color: #fff;
             margin-bottom: 20px;
         }
 
+        p {
+            font-size: 1.17em;
+            font-weight: bolder;
+        }
+
         h2 {
-            color: #333;
+            color: rgb(83, 77, 187);
         }
 
         div {
@@ -53,30 +61,31 @@
             background-color: #333;
         }
 
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
 
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
 
-        .topnav a.active {
-            background-color:  rgb(83, 77, 187);
-            color: white;
-        }
+                .topnav a.active {
+                    background-color: rgb(83, 77, 187);
+                    color: white;
+                }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <div class="topnav">
         <a href="/physician_view.html">Physician View</a>
+        <a href="/allpatientPhysician.html">All Patient View</a>
         <a class="active" href="#physician_account_info">Account Info</a>
         <a href="/update_account_physician.html">Update Account</a>
         <a href="/index.html">Log Out</a>  <!-- Change this so that it logs user out -->
@@ -84,26 +93,21 @@
 
     <h1>Account Info</h1>
 
-       <!-- Name -->
-       <div>
-        <h2>Name</h2>
+    <!-- Name -->
+    <div>
+        <h2>First Name:</h2>
+        <p id="first_name"></p>
     </div>
-
+    <div>
+        <h2>Last Name:</h2>
+        <p id="last_name"></p>
+    </div>
     <!-- Email -->
     <div>
-        <h2>Email</h2>
-    
+        <h2>Email:</h2>
+        <p id="email"></p>
+
     </div>
 
-     <!-- Password -->
-     <div>
-        <h2>Password</h2>
-    
-    </div>
-
-    <!-- Devices -->
-    <div>
-        <h2>Device(s)</h2>
-    </div>
 </body>
 </html>

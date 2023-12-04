@@ -100,12 +100,12 @@ router.post("/particle_data", function (req, res) {
     }
 
     const newParticle = new particle_db({
-        deviceID: req.body.coreid,
+        device: req.body.coreid,
         HR: HR_Value,
         SPO2: SPO2_Value,
         published_at: req.body.published_at,
     });
-    newParticle.save(function (err, deviceID) {
+    newParticle.save(function (err, device) {
         if (err) {
             var errormsg = { "error": "zip and airQuality are required." }
             res.status(400).send(errormsg);

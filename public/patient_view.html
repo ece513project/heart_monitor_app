@@ -1,4 +1,4 @@
-<!-- Julia is working on this
+﻿<!-- Julia is working on this
 
 The web application supports a weekly summary view and detailed daily view.
 The weekly summary view will show the user’s average, minimum, and maximum
@@ -36,14 +36,14 @@ frequency at which measurements will be requested.
 
         h1 {
             text-align: center;
-            color: #333;
+            color: rgb(83, 77, 187);
             padding: 20px;
             background-color: #fff;
             margin-bottom: 20px;
         }
 
         h2 {
-            color: #333;
+            color: rgb(83, 77, 187);
         }
 
         div {
@@ -102,6 +102,9 @@ frequency at which measurements will be requested.
         <a class="active" href="#patient_view">Patient View</a>
         <a href="/patient_account_info.html">Account Info</a>
         <a href="/update_account_patient.html">Update Account</a>
+        
+
+
         <a href="/index.html">Log Out</a>  <!-- Change this so that it logs user out -->
     </div>
 
@@ -113,6 +116,7 @@ frequency at which measurements will be requested.
         <p>Average Heart Rate: <span id="averageHeartRate"></span></p>
         <p>Minimum Heart Rate: <span id="minHeartRate"></span></p>
         <p>Maximum Heart Rate: <span id="maxHeartRate"></span></p>
+        <canvas id="barChart"></canvas>
     </div>
 
     <!-- Detailed Daily View -->
@@ -129,15 +133,6 @@ frequency at which measurements will be requested.
         </div>
     </div>
 
-    <!-- additional HTML content here -->
-
-    <script>
-        // JavaScript code for handling data and updating charts goes here
-
-        function loadDetailedView() {
-            // Fetch data for the selected date and update charts
-            // Use a third-party library like Chart.js to plot the charts
-        }
-    </script>
+    
 </body>
 </html>
