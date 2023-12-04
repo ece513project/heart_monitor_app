@@ -1,5 +1,6 @@
 /*
 The README should include:
+Description of how to run the project from scratch. The documentation for the endpoint can be included.
 Links to your server, the pitch, and demonstration videos.
 Login credentials for an existing user account with recently collected data
 ECE 513 only: Login credentials for a physician account
@@ -16,10 +17,7 @@ The pitch:
 (From the article "Get to Know Your Heart Rate: It Might Save Your Life" on Sutter Health website.
 https://www.sutterhealth.org/health/heart/get-to-know-your-heart-rate-it-might-save-your-life#:~:text=Track%20Your%20Heart%20Rate,dehydration%2C%20inactivity%20and%20persistent%20stress.)
 
-The Heart Track application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation
-levels. The device will periodically remind users to take heart rate and blood oxygen saturation level
-measurements.These measurements will then be transmitted to a web application through which users and
-physicians can view the data via desktop, tablet or mobile device.
+The Heart Track application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation levels. The device will periodically remind users to take heart rate and blood oxygen saturation level measurements.These measurements will then be transmitted to a web application through which users and physicians can view the data via desktop, tablet or mobile device.
 
 Demonstration video:
 
