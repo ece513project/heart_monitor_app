@@ -41,12 +41,15 @@ The Heart Monitoring application is an IoT-enabled web app for monitoring heart 
 The pitch video and demonstration video should be hosted on your server.
 
 
-Physician Login
+Physician1 Login
 Email: drpepper@gmail.com
-Password: behealthy123!
+Password: beHealthy123!
 
-Patient Login
-Email: diabetes_sucks@gmail.com
+Patient1 Login
+Email: behealthy123@gmail.com
 Password: Fun!nth3sun513
+
+Device ID:
+ARNHAD2393STAYE
 
 Documentation for endpoins:
