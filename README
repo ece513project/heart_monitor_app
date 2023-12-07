@@ -6,8 +6,22 @@ Login credentials for an existing user account with recently collected data
 ECE 513 only: Login credentials for a physician account
 */
 
+
 Link to server:
 http://ec2-3-19-185-33.us-east-2.compute.amazonaws.com:3000/index.html
+
+Description:
+The Heart Monitoring device is composed of an Argon Developement board from Particle which can transmit data both through bluetooth and wifi, and a Heart Rate Sensor, the Module MAX30102 for Pulse Detection and Blood Oxygen levels. The IoT device periodically asks the user to take a pulse and blood oxygen saturation level reading by flashing the RGB LED on the device blue. 
+
+Once a measurement is taken, the measurement will immediately recorded, and sent to the database if connected to Wi-Fi. If the device is not connected to Wi-Fi, it locally stores the data for up to 24 hours and submits the data when later connected. The time-of-day range and frequency of measurements is configurable by the user through the web application. 
+
+
+The Heart Monitoring website includes a home page with a description of the product, an image of the product, a link to the reference page for 3rd party APIs, libraries and code used in the project, and list of the creators with their photo, name and email. At the top of the page there is a navigation bar with the options of patient login, physician login, new patient registration, and new physician registration.
+
+To make a new account, users must provide first and last name, an email for the username, a strong password and register one Heart Monitoring Device. Once the account is created, their login credentials and information are securely stored in the database, and the user can login with email and password.
+
+Once the user is logged in, they can view their health metrics in a weekly summary view or detailed daily view. The weekly summary view shows the user’s average, minimum, and maximum heart rate in the past 7 days. The detailed daily view (for a selected day) graphs the heart rate and blood oxygen saturation level readings for the selected day on separate charts. This is a similar setup for both patient and physician accounts.
+
 
 The pitch:
 "Keeping track of your heart rate can give you insight into your fitness level, heart health and emotional health, Dr. Ronesh Sinha, M.D. says. 'Many people are walking around with a resting heart rate that is too high, due to factors such as too much caffeine, dehydration, inactivity and persistent stress. Those extra heart beats over time can be taking years off your life.'
@@ -17,9 +31,15 @@ The pitch:
 (From the article "Get to Know Your Heart Rate: It Might Save Your Life" on Sutter Health website.
 https://www.sutterhealth.org/health/heart/get-to-know-your-heart-rate-it-might-save-your-life#:~:text=Track%20Your%20Heart%20Rate,dehydration%2C%20inactivity%20and%20persistent%20stress.)
 
-The Heart Track application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation levels. The device will periodically remind users to take heart rate and blood oxygen saturation level measurements.These measurements will then be transmitted to a web application through which users and physicians can view the data via desktop, tablet or mobile device.
+The Heart Monitoring application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation levels. The device periodically reminds users to take heart rate and blood oxygen saturation level measurements. These measurements will then be transmitted to a web application through which users and physicians can view the data via desktop, tablet or mobile device.
 
-Demonstration video:
+5-minute Pitch Video:
+
+15-20 minute Demo Video:
+ This video should demonstrate both the user experience and discuss the actual implementation. The suggestion is to split the video into 7-10 minutes for the user experience and 7-10 minutes to discuss your code implementations. This video will be used during the grading of your project and should mention how you addressed each requirement. 
+
+The pitch video and demonstration video should be hosted on your server.
+
 
 Physician Login
 Email: drpepper@gmail.com
@@ -28,3 +48,5 @@ Password: behealthy123!
 Patient Login
 Email: diabetes_sucks@gmail.com
 Password: Fun!nth3sun513
+
+Documentation for endpoins:
