@@ -3,69 +3,32 @@
 let Data;
 
 $(function() {
-    $('#select_patient').change(get_chart);
-    $('#loadDetailedView').click(function() {
-
-        daily_report($('#select_patient').val());
-    });
+    
 
     $.ajax({
-        url: '/physicians/status',
+        url: '/patients/status',
         method: 'GET',
         headers: { 'x-auth': window.localStorage.getItem("token") },
         dataType: 'json'
     })
         .done(function(data, textStatus, jqXHR) {
-            read_all_patients()
-            
+            // $('#rxData').html(JSON.stringify(data, null, 2));
+            weekly_report(data[0]);
+            $('#loadDetailedView').click(function() {
+
+                daily_report(data[0]);
+            });
+           
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             window.location.replace("../display.html");
         });
-
-
 });
 
-function read_all_patients() {
-    $.ajax({
-        url: '/physicians/read_all',
-        method: 'GET',
-        dataType: 'json'
-    })
-        .done(function(data, textStatus, jqXHR) {
-            const res = data.reduce((a, b) => {
-                for (let i in b) {
-                    if (!a[i]) {
-                        a[i] = [];
-                    }
-                    a[i].push(b[i]);
-                }
-                return a;
-            }, {})
-
-            for (let i = 0; i < res.first_name.length; i++) {
-                var name = res.first_name[i]
-                var device = res.device[i]
-                $("#select_patient").append(`<option value="${device}">${name}</option>`);
-            }
-            console.log(res);
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            window.location.replace("display.html");
-        });
-}
-
-function get_chart() {
-    device = $('#select_patient').val();
-    console.log(device);
-    weekly_report(device);
-    daily_report(device);
-}
-
-function weekly_report(device) {
+function weekly_report(Data) {
     let txdata = {
-        device: device,
-        published_at: new Date(),
+        device: Data.device,
+        current_date: new Date(),
     };
     $.ajax({
         url: '/api/weekly_patient_data',
@@ -85,7 +48,9 @@ function weekly_report(device) {
 
                 return a;
             }, {});
-
+            $('#meanHR').html(mean(res.HR));
+            $('#maxHR').html(max(res.HR));
+            $('#minHR').html(min(res.HR));
             plot_bar_chart(res);
         })
         .fail(function(data, textStatus, jqXHR) {
@@ -97,14 +62,14 @@ function weekly_report(device) {
         let SPO2_arr = res.SPO2;
         console.log(res);
         //bar chart
-        var chart = document.getElementById("barChart").getContext('2d');
-        var myBarChart = new Chart(chart, {
+        var bar = document.getElementById("barChart").getContext('2d');
+        var summary= new Chart(bar, {
             type: 'bar',
             data: {
-                labels: ['HR-Mean', 'HR-Min', 'HR-Max', 'SPO2-Mean', 'SPO2-Max', 'SPO2-Min'],
+                labels: ['HR-Mean', 'HR-Min', 'HR-Max', 'SPO2-Mean', 'SPO2-Min', 'SPO2-Max'],
                 datasets: [{
-                    label: 'Sensor Values',
-                    data: [mean(HR_arr), min(HR_arr), max(HR_arr), mean(SPO2_arr), max(SPO2_arr), min(SPO2_arr)],
+                    //label: ["Particle Readings"],
+                    data: [mean(HR_arr), min(HR_arr), max(HR_arr), mean(SPO2_arr), min(SPO2_arr), max(SPO2_arr)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -125,22 +90,27 @@ function weekly_report(device) {
                 }]
             },
             options: {
+                legend: { display: false },
                 scales: {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
                         }
                     }]
+                },
+                title: {
+                    display: true,
+                    text: "Summary of Particle Readings"
                 }
             }
         });
     };
 };
 
-function daily_report(device) {
+function daily_report(Data) {
     let txdata = {
-        device: device,
-        urrent_date: $('#selectedDate').val(),
+        device: Data.device,
+        current_date: $('#selectedDate').val(),
     };
     $.ajax({
         url: '/api/daily_patient_data',
@@ -150,6 +120,8 @@ function daily_report(device) {
         dataType: 'json'
     })
         .done(function(data, textStatus, jqXHR) {
+            console.log('Selected Date:', $('#selectedDate').val());
+
             const res = data.reduce((a, b) => {
                 for (let i in b) {
                     if (!a[i]) {
@@ -171,7 +143,7 @@ function daily_report(device) {
         console.log(Data);
         var chart1 = document.getElementById("heartRateChart").getContext('2d');
         var chart2 = document.getElementById("SPO2Chart").getContext('2d');
-
+        
         var HRChart = new Chart(chart1, {
             type: 'line',
             data: {
@@ -206,17 +178,17 @@ function daily_report(device) {
             data: {
                 labels: Data.published_at,
                 datasets: [
-                    {
-                        label: "SPO2",
-                        data: Data.SPO2,
-                        backgroundColor: [
-                            'rgba(8, 208, 69, .2)',
-                        ],
-                        borderColor: [
-                            'rgba(8, 87, 69, .7)',
-                        ],
-                        borderWidth: 2
-                    }
+                {
+                    label: "SPO2",
+                    data: Data.SPO2,
+                    backgroundColor: [
+                        'rgba(8, 208, 69, .2)',
+                    ],
+                    borderColor: [
+                        'rgba(8, 87, 69, .7)',
+                    ],
+                    borderWidth: 2
+                }
                 ]
             },
             options: {
@@ -255,3 +227,5 @@ function max(Data_Arr) {
     console.log(Max);
     return Max;
 }
+
+
