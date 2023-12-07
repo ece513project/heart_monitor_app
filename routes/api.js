@@ -16,8 +16,9 @@ router.get('/readAll', function (req, res) {
     });
 });
 
-router.post('/read_patient_data', function (req, res) {
-    particle_db.find({ deviceID: req.body.device_sn }, function (err, docs) {
+router.post('/read_patient_data', function(req, res) {
+    console.log("HELLO");
+    particle_db.find({ device: req.body.device }, function (err, docs) {
         if (err) {
             let msgStr = `Something wrong....`;
             res.status(201).json({ message: msgStr });
@@ -33,11 +34,11 @@ router.post('/weekly_patient_data', function (req, res) {
     const start = moment(req.body.current_date).startOf('day').subtract(7, 'day').toDate();
     console.log(end);
     console.log(start);
-
+    console.log("HELLO");
     particle_db.find({
         $and: [
             {
-                deviceID: req.body.device_sn
+                device: req.body.device
             },
             {
                 createdAt: { $gte: start, $lt: end }
@@ -49,24 +50,30 @@ router.post('/weekly_patient_data', function (req, res) {
             res.status(201).json({ message: msgStr });
         }
         else {
+            
             res.status(201).json(docs);
         }
     });
 });
 
 router.post('/daily_patient_data', function (req, res) {
-    const end = moment(req.body.current_date).startOf('day').toDate();
-    const start = moment(req.body.current_date).startOf('day').subtract(1, 'day').toDate();
+    const end = moment(req.body.current_date).endOf('day').toDate();
+    const start = moment(req.body.current_date).startOf('day').toDate();
     console.log(end);
     console.log(start);
+    console.log('start:', start);
+    console.log('end:', end);
+    console.log('req.body.current_date:', req.body.current_date);
 
+    console.log("HELLO");
+    
     particle_db.find({
         $and: [
             {
-                deviceID: req.body.device_sn
+                device: req.body.device
             },
             {
-                createdAt: { $gte: start, $lt: end }
+                published_at: { $gte: start, $lt: end }
             }
         ]
     }, function (err, docs) {
@@ -80,7 +87,7 @@ router.post('/daily_patient_data', function (req, res) {
     });
 });
 
-router.post("/particle_data", function (req, res) {
+router.post("/create", function (req, res) {
     res.status(200);
     console.log(req.body);
 

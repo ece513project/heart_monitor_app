@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');     // Parses JSON in body
 var physicianRouter = require('./routes/physicians');
 var indexRouter = require('./routes/index');
 var patientRouter = require('./routes/patients');
-//var apiRouter = require('./routes/api');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -42,7 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-//app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 app.use('/patients', patientRouter);
 app.use('/physicians', physicianRouter);
 

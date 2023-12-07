@@ -2,7 +2,7 @@
 let Data;
 
 $(function() {
-    //$('#select_patient').change(get_chart);
+    $('#select_patient').change(get_chart);
 
     $.ajax({
         url: '/physicians/status',
@@ -46,7 +46,7 @@ function read_all_patients() {
                 </div><br><br><br>`
                 let chart = `${name}-Report`
                 $("#all_patients").append(Reports);
-                //get_chart(device, chart)
+                get_chart(device, chart)
             }
             console.log(res);
         })
@@ -83,7 +83,7 @@ function weekly_report(device, chart) {
 
                 return a;
             }, {});
-
+            
             plot_bar_chart(res, chart);
         })
         .fail(function(data, textStatus, jqXHR) {
@@ -99,10 +99,10 @@ function weekly_report(device, chart) {
         var myBarChart = new Chart(ctxB, {
             type: 'bar',
             data: {
-                labels: ['HR-Mean', 'spO2-Mean', 'HR-Min', 'spO2-Min', 'HR-Max', 'spO2-Max'],
+                labels: ['HR-Mean', 'HR-Min', 'HR-Max', 'SPO2-Mean', 'SPO2-Max', 'SPO2-Max'],
                 datasets: [{
-                    label: 'Sensor Values',
-                    data: [mean(HR_arr), mean(SPO2_arr), min(HR_arr), min(SPO2_arr), max(HR_arr), max(SPO2_arr)],
+                    label: ["Particle Readings", "Particle Readings", "Particle Readings"],
+                    data: [mean(HR_arr), min(HR_arr),max(HR_arr) , mean(SPO2_arr), min(SPO2_arr), max(SPO2_arr)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

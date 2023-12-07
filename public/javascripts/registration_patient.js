@@ -146,9 +146,20 @@ function readAll() {
             $('#rxData').html(JSON.stringify(jqXHR, null, 2));
         });
 }
-
+function readAllAPI() {
+    $.ajax({
+        url: '/api/readAll',
+        method: 'GET'
+    })
+        .done(function(data, textStatus, jqXHR) {
+            $('#rxData').html(JSON.stringify(data, null, 2));
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            $('#rxData').html(textStatus);
+        });
+}
    
 $(function () {
     $('#btnCreate').click(createPatient);
-  
+    $('#btnRead').click(readAllAPI);
 });
