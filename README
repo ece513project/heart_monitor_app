@@ -25,9 +25,10 @@ https://www.sutterhealth.org/health/heart/get-to-know-your-heart-rate-it-might-s
 The Heart Monitoring application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation levels. The device periodically reminds users to take heart rate and blood oxygen saturation level measurements. These measurements will then be transmitted to a web application through which users and physicians can view the data via desktop, tablet or mobile device.
 
 **5-minute Pitch Video:**
+https://youtu.be/vpstfL2aiPc?si=XQQx3xIabTy40Baq
 
 **15-20 minute Demo Video:**
- This video should demonstrate both the user experience and discuss the actual implementation. The suggestion is to split the video into 7-10 minutes for the user experience and 7-10 minutes to discuss your code implementations. This video will be used during the grading of your project and should mention how you addressed each requirement. 
+
 
 The pitch video and demonstration video should be hosted on your server.
 

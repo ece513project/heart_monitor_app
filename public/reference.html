@@ -37,12 +37,37 @@
 
     <div>
         <h4>Third-party APIs:</h4>
-        <p>RESTful </p>
+        <h5>Route – /api</h5>
+    <ul>
+        <li><code>/create</code>: To create data in DB from IoT webhook</li>
+        <li><code>/read_patient_data</code>: Return patient information</li>
+        <li><code>/weekly_patient_data</code>: Return weekly patient info</li>
+        <li><code>/daily_patient_data</code>: Return daily patient info</li>
+    </ul>
+
+    <h5>Route – /physicians</h5>
+    <ul>
+        <li><code>/create</code>: To register a new physician in DB</li>
+        <li><code>/read_all</code>: Return patient information for physician display</li>
+        <li><code>/logIn</code>: Log in a physician</li>
+        <li><code>/status</code>: Authentication</li>
+        <li><code>/updateInfo</code>: Update account information</li>
+    </ul>
+
+    <h5>Route – /patients</h5>
+    <ul>
+        <li><code>/create</code>: To register new patient in DB</li>
+        <li><code>/read_all</code>: Return all physician info for select physician dropdown</li>
+        <li><code>/logIn</code>: Log in a patient based on email info</li>
+        <li><code>/status</code>: Authentication</li>
+        <li><code>/updateInfo</code>: Update account information</li>
+    </ul>
+
         <p></p>
     </div>
 
     <div>
-        <h4>Libraries</h4>
+        <h4>Libraries and Modules</h4>
         <p>time.h</p>
         <p>string.h</p>
         <p>WIRE.h</p>
@@ -52,9 +77,7 @@
         <p>Optical Heart Rate Detection (PBA Algorithm) using the MAX30105 Breakout<br>
             By: Nathan Seidle @ SparkFun Electronics<br>
             <a href="https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/examples/Example5_HeartRate/Example5_HeartRate.ino">Link</a></p>
-    </div>
-
-    <div>
+   
         <h4>Express Middleware in Node.js</h4>
     <p>
         <code>require('express');</code><br>
