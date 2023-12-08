@@ -1,12 +1,3 @@
-/*
-The README should include:
-Description of how to run the project from scratch. The documentation for the endpoint can be included.
-Links to your server, the pitch, and demonstration videos.
-Login credentials for an existing user account with recently collected data
-ECE 513 only: Login credentials for a physician account
-*/
-
-
 Link to server:
 http://ec2-3-19-185-33.us-east-2.compute.amazonaws.com:3000/index.html
 
@@ -14,7 +5,6 @@ Description:
 The Heart Monitoring device is composed of an Argon Developement board from Particle which can transmit data both through bluetooth and wifi, and a Heart Rate Sensor, the Module MAX30102 for Pulse Detection and Blood Oxygen levels. The IoT device periodically asks the user to take a pulse and blood oxygen saturation level reading by flashing the RGB LED on the device blue. 
 
 Once a measurement is taken, the measurement will immediately recorded, and sent to the database if connected to Wi-Fi. If the device is not connected to Wi-Fi, it locally stores the data for up to 24 hours and submits the data when later connected. The time-of-day range and frequency of measurements is configurable by the user through the web application. 
-
 
 The Heart Monitoring website includes a home page with a description of the product, an image of the product, a link to the reference page for 3rd party APIs, libraries and code used in the project, and list of the creators with their photo, name and email. At the top of the page there is a navigation bar with the options of patient login, physician login, new patient registration, and new physician registration.
 
@@ -40,16 +30,56 @@ The Heart Monitoring application is an IoT-enabled web app for monitoring heart 
 
 The pitch video and demonstration video should be hosted on your server.
 
-
-Physician1 Login
-Email: drpepper@gmail.com
-Password: beHealthy123!
+Login Credentials:
 
 Patient1 Login
-Email: behealthy123@gmail.com
-Password: Fun!nth3sun513
+Name: Alice Johnson
+Email: alice.johnson@example.com
+Password: Password123
+Device ID: ARNHAD2393STAYE
+
+Patient2 Login
+Name: David Miller
+Email: david.miller@example.com
+Password: Password123
+Device ID: ARNHAD2393STAYE
+
+Physician1 Login
+First name: Dr. Emily
+Last name: Parker
+Email: emily.parker@healthcareclinic.com
+Password: Password123
+
+Physician2 Login
+First name: Dr. Brian
+Last name: Andrews
+Email: brian.andrews@medicalgroup.org
+Password: Password123
 
 Device ID:
 ARNHAD2393STAYE
 
 Documentation for endpoins:
+
+Route – /api
+/create : To create data in DB from IoT webhook 
+/read_patient_data : Return patient information
+/weekly_patient_data : Return weekly patient info
+/daily_patient_data : Return daily patient info
+
+Route – /physicians
+/create : To register a new physician in DB
+/read_all : Return patient information for physician display
+/logIn : Log in a physician
+/status : Authentication
+/updateInfo : Update account information
+
+Route – /patients
+/create : To register new patient in DB 
+/read_all : Return all physician info for select physician dropdown
+/logIn : Log in a patient based on email info
+/status : Authentication
+/updateInfo :Update account information 
+
+
+
