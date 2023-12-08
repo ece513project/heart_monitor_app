@@ -58,7 +58,7 @@ Last name: Andrews
 Email: brian.andrews@medicalgroup.org
 Password: Password123
 
-**Documentation for endpoins:**
+**Documentation for endpoints:**
 
 Route – /api
 /create : To create data in DB from IoT webhook 

@@ -4,7 +4,6 @@ let Data;
 
 $(function() {
     
-
     $.ajax({
         url: '/patients/status',
         method: 'GET',
@@ -58,8 +57,8 @@ function weekly_report(Data) {
         });
 
     function plot_bar_chart(res) {
-        let HR_arr = res.HR;
-        let SPO2_arr = res.SPO2;
+        let HR = res.HR;
+        let SPO2 = res.SPO2;
         console.log(res);
         //bar chart
         var bar = document.getElementById("barChart").getContext('2d');
@@ -69,7 +68,7 @@ function weekly_report(Data) {
                 labels: ['HR-Mean', 'HR-Min', 'HR-Max', 'SPO2-Mean', 'SPO2-Min', 'SPO2-Max'],
                 datasets: [{
                     //label: ["Particle Readings"],
-                    data: [mean(HR_arr), min(HR_arr), max(HR_arr), mean(SPO2_arr), min(SPO2_arr), max(SPO2_arr)],
+                    data: [mean(HR), min(HR), max(HR), mean(SPO2), min(SPO2), max(SPO2)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -206,23 +205,23 @@ function daily_report(Data) {
     }
 }
 
-function mean(Data_Arr) {
-    const filtered = Data_Arr.filter(item => item !== 0);
+function mean(data) {
+    const filtered = data.filter(item => item !== 0);
     const sum = filtered.reduce((a, b) => a + b);
     const avg = sum / filtered.length;
     console.log(avg);
     return Math.round(avg);
 }
 
-function min(Data_Arr) {
-    const filtered = Data_Arr.filter(item => item !== 0);
+function min(data) {
+    const filtered = data.filter(item => item !== 0);
     Min = Math.min.apply(Math, filtered);
     console.log(Min);
     return Min;
 }
 
-function max(Data_Arr) {
-    const filtered = Data_Arr.filter(item => item !== 0);
+function max(data) {
+    const filtered = data.filter(item => item !== 0);
     Max = Math.max.apply(Math, filtered);
     console.log(Max);
     return Max;

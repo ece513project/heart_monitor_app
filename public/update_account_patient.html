@@ -29,7 +29,10 @@
         h2 {
             color: rgb(83, 77, 187);
         }
-
+        select{
+            width: 100%;
+            height: 30px;
+        }
         div {
             padding: 10px; /* Reduce padding to make it smaller */
             margin: 10px;
@@ -163,19 +166,23 @@
             <label for="passwordConfirm">Confirm New Password</label>
             <input type="password" id="uppasswordConfirm" name="uppasswordConfirm">
         </div>
-        <div>
+        <!--<div>
             <label for="physician">Change Physician (Enter Physician Email)</label>
             <input type="text" id="upphysician" name="upphysician">
-        </div>
+        </div>-->
         <div>
             <label for="select_physician">Change Physician</label>
-            <select id="select_patient"></select>
+            <select id="select_physician">
+            <option value="" selected></option></select>
+
+
         </div>
-     
+
         <div>
             <label for="device">New Device ID</label>
             <input type="text" id="updevice" name="updevice">
         </div>
+        
         <br />
 
         <button id="btnUpdate">Update</button>

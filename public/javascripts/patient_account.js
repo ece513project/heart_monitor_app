@@ -3,7 +3,7 @@
 let Data;
 
 $(function() {
-    //$('#btnUpdate').click(Update_Info);
+
 
     $.ajax({
         url: '/patients/status',
@@ -20,6 +20,7 @@ $(function() {
             $('#email').html(data[0].email);
             $('#physician').html(data[0].physician);
             $('#device').html(data[0].device);
+            read_all_physicians();
             Data = data[0];
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
@@ -27,7 +28,36 @@ $(function() {
         });
 });
 
+function read_all_physicians() {
+    $.ajax({
+        url: '/patients/read_all',
+        method: 'GET',
+        dataType: 'json'
+    })
+        .done(function(data, textStatus, jqXHR) {
+            const res = data.reduce((a, b) => {
+                for (let i in b) {
+                    if (!a[i]) {
+                        a[i] = [];
+                    }
+                    a[i].push(b[i]);
+                }
+                return a;
+            }, {})
 
+            for (let i = 0; i < res.first_name.length; i++) {
+                var first_name = res.first_name[i];
+                var last_name = res.last_name[i];
+                var email = res.email[i];
+                //var device = res.device[i]
+                $("#select_physician").append(`<option value="${email}">${first_name} ${last_name}</option>`);
+            }
+            console.log(res);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            window.location.replace("display.html");
+        });
+}
 
 
 function updatePatient() {
@@ -38,9 +68,11 @@ function updatePatient() {
     const lastName = $("#uplast_name").val();   
     const password = $("#uppassword").val();
     const passwordConfirm = $("#uppasswordConfirm").val();
-    const physician = $("#upphysician").val();
-    const device = $("#updevice").val();
-
+    //const physician = $("#upphysician").val();
+    const physician = $("select_physician").val();
+    //const device = $("#updevice").val();
+    const add_device = $("#add_device").val();
+    const remove_device = $("#remove_device").val();
     //Validation Regex
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,20}$/;
 
@@ -127,21 +159,26 @@ function makeAPICall() {
     if ($("#uppassword").val()) {
         txdata.password = $("#uppassword").val();
     }
-
-    if ($("#upphysician").val()) {
-        txdata.physician = $("#upphysician").val();
+    if ($("#select_physician").val()) {
+        txdata.physician = $("#select_physician").val();
+        console.log(txdata.physician);
     }
+
+    //if ($("#upphysician").val()) {
+        //txdata.physician = $("#upphysician").val();
+    //}
 
     if ($("#updevice").val()) {
         txdata.device = $("#updevice").val();
     }
+    
 
     // Check if txdata is empty, if yes, do not make the API call
     if ($.isEmptyObject(txdata)) {
         console.log("No fields to update.");
         return;
     }
-
+    console.log(txdata);
     $.ajax({
         url: '/patients/updateInfo',
         method: 'POST',
