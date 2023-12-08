@@ -1,7 +1,8 @@
 Link to server:
 http://ec2-3-19-185-33.us-east-2.compute.amazonaws.com:3000/index.html
+**DATA AVAILABLE FROM DEC 1st to DEC 8th FOR DEVICE ARNHAD2393STAYE**
 
-Description:
+**Description:**
 The Heart Monitoring device is composed of an Argon Developement board from Particle which can transmit data both through bluetooth and wifi, and a Heart Rate Sensor, the Module MAX30102 for Pulse Detection and Blood Oxygen levels. The IoT device periodically asks the user to take a pulse and blood oxygen saturation level reading by flashing the RGB LED on the device blue. 
 
 Once a measurement is taken, the measurement will immediately recorded, and sent to the database if connected to Wi-Fi. If the device is not connected to Wi-Fi, it locally stores the data for up to 24 hours and submits the data when later connected. The time-of-day range and frequency of measurements is configurable by the user through the web application. 
@@ -13,7 +14,7 @@ To make a new account, users must provide first and last name, an email for the 
 Once the user is logged in, they can view their health metrics in a weekly summary view or detailed daily view. The weekly summary view shows the user’s average, minimum, and maximum heart rate in the past 7 days. The detailed daily view (for a selected day) graphs the heart rate and blood oxygen saturation level readings for the selected day on separate charts. This is a similar setup for both patient and physician accounts.
 
 
-The pitch:
+**The pitch:**
 "Keeping track of your heart rate can give you insight into your fitness level, heart health and emotional health, Dr. Ronesh Sinha, M.D. says. 'Many people are walking around with a resting heart rate that is too high, due to factors such as too much caffeine, dehydration, inactivity and persistent stress. Those extra heart beats over time can be taking years off your life.'
 
 "Dr. Sinha recommends tracking your heart rate as well as keeping a journal of which activities are causing higher heart rates. Then use that information to make changes, set priorities and move toward a healthier life."
@@ -23,14 +24,14 @@ https://www.sutterhealth.org/health/heart/get-to-know-your-heart-rate-it-might-s
 
 The Heart Monitoring application is an IoT-enabled web app for monitoring heart rate and blood oxygen saturation levels. The device periodically reminds users to take heart rate and blood oxygen saturation level measurements. These measurements will then be transmitted to a web application through which users and physicians can view the data via desktop, tablet or mobile device.
 
-5-minute Pitch Video:
+**5-minute Pitch Video:**
 
-15-20 minute Demo Video:
+**15-20 minute Demo Video:**
  This video should demonstrate both the user experience and discuss the actual implementation. The suggestion is to split the video into 7-10 minutes for the user experience and 7-10 minutes to discuss your code implementations. This video will be used during the grading of your project and should mention how you addressed each requirement. 
 
 The pitch video and demonstration video should be hosted on your server.
 
-Login Credentials:
+**Login Credentials:**
 
 Patient1 Login
 Name: Alice Johnson
@@ -56,10 +57,7 @@ Last name: Andrews
 Email: brian.andrews@medicalgroup.org
 Password: Password123
 
-Device ID:
-ARNHAD2393STAYE
-
-Documentation for endpoins:
+**Documentation for endpoins:**
 
 Route – /api
 /create : To create data in DB from IoT webhook 
