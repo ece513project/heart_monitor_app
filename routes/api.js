@@ -3,21 +3,20 @@ var moment = require('moment');
 var router = express.Router();
 var particle_db = require("../models/particle");
 
-
-router.get('/readAll', function (req, res) {
-    particle_db.find(function (err, docs) {
-        if (err) {
-            let msgStr = `Something wrong....`;
-            res.status(201).json({ message: msgStr });
-        }
-        else {
-            res.status(201).json(docs);
-        }
-    });
-});
+//FOR TESTING 
+//router.get('/readAll', function (req, res) {
+//    particle_db.find(function (err, docs) {
+//        if (err) {
+//            let msgStr = `Something wrong....`;
+//            res.status(201).json({ message: msgStr });
+//        }
+//        else {
+//            res.status(201).json(docs);
+//        }
+//    });
+//});
 
 router.post('/read_patient_data', function(req, res) {
-    console.log("HELLO");
     particle_db.find({ device: req.body.device }, function (err, docs) {
         if (err) {
             let msgStr = `Something wrong....`;
@@ -34,7 +33,7 @@ router.post('/weekly_patient_data', function (req, res) {
     const start = moment(req.body.current_date).startOf('day').subtract(7, 'day').toDate();
     console.log(end);
     console.log(start);
-    console.log("HELLO");
+    //console.log("HELLO");
     particle_db.find({
         $and: [
             {
@@ -65,7 +64,7 @@ router.post('/daily_patient_data', function (req, res) {
     console.log('end:', end);
     console.log('req.body.current_date:', req.body.current_date);
 
-    console.log("HELLO");
+    //Sconsole.log("HELLO");
     
     particle_db.find({
         $and: [
@@ -86,7 +85,7 @@ router.post('/daily_patient_data', function (req, res) {
         }
     });
 });
-
+//For the webhook
 router.post("/create", function (req, res) {
     res.status(200);
     console.log(req.body);

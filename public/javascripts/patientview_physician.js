@@ -16,7 +16,7 @@ $(function() {
         dataType: 'json'
     })
         .done(function(data, textStatus, jqXHR) {
-            read_all_patients()
+            read_all_patients();
             
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
@@ -57,9 +57,10 @@ function read_all_patients() {
 
 function get_chart() {
     device = $('#select_patient').val();
+    
     console.log(device);
     weekly_report(device);
-    daily_report(device);
+    
 }
 
 function weekly_report(device) {
@@ -84,8 +85,11 @@ function weekly_report(device) {
                 }
 
                 return a;
-            }, {});
-
+            }   , {});
+            
+            $('#meanHR').html(mean(res.HR));
+            $('#maxHR').html(max(res.HR));
+            $('#minHR').html(min(res.HR));
             plot_bar_chart(res);
         })
         .fail(function(data, textStatus, jqXHR) {
@@ -93,8 +97,8 @@ function weekly_report(device) {
         });
 
     function plot_bar_chart(res) {
-        let HR_arr = res.HR;
-        let SPO2_arr = res.SPO2;
+        let HR = res.HR;
+        let SPO2 = res.SPO2;
         console.log(res);
         //bar chart
         var chart = document.getElementById("barChart").getContext('2d');
@@ -104,7 +108,7 @@ function weekly_report(device) {
                 labels: ['HR-Mean', 'HR-Min', 'HR-Max', 'SPO2-Mean', 'SPO2-Max', 'SPO2-Min'],
                 datasets: [{
                     label: 'Sensor Values',
-                    data: [mean(HR_arr), min(HR_arr), max(HR_arr), mean(SPO2_arr), max(SPO2_arr), min(SPO2_arr)],
+                    data: [mean(HR), min(HR), max(HR), mean(SPO2), max(SPO2), min(SPO2)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -140,7 +144,7 @@ function weekly_report(device) {
 function daily_report(device) {
     let txdata = {
         device: device,
-        urrent_date: $('#selectedDate').val(),
+        current_date: $('#selectedDate').val(),
     };
     $.ajax({
         url: '/api/daily_patient_data',
@@ -192,6 +196,13 @@ function daily_report(device) {
             options: {
                 responsive: true,
                 scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                scales: {
                     label: {
                         type: 'time',
                         time: {
@@ -222,6 +233,13 @@ function daily_report(device) {
             options: {
                 responsive: true,
                 scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                scales: {
                     label: {
                         type: 'time',
                         time: {
@@ -234,23 +252,23 @@ function daily_report(device) {
     }
 }
 
-function mean(Data_Arr) {
-    const filtered = Data_Arr.filter(item => item !== 0);
+function mean(data) {
+    const filtered = data.filter(item => item !== 0);
     const sum = filtered.reduce((a, b) => a + b);
     const avg = sum / filtered.length;
     console.log(avg);
     return Math.round(avg);
 }
 
-function min(Data_Arr) {
-    const filtered = Data_Arr.filter(item => item !== 0);
+function min(data) {
+    const filtered = data.filter(item => item !== 0);
     Min = Math.min.apply(Math, filtered);
     console.log(Min);
     return Min;
 }
 
-function max(Data_Arr) {
-    const filtered = Data_Arr.filter(item => item !== 0);
+function max(data) {
+    const filtered = data.filter(item => item !== 0);
     Max = Math.max.apply(Math, filtered);
     console.log(Max);
     return Max;

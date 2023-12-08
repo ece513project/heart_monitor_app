@@ -150,16 +150,18 @@ The patient's detailed day view will present the same information as the detaile
     <!-- All-Patient View -->
     <div>
         <h2>Select a Patient</h2>
-        <select id="select_patient"></select>
+        <select id="select_patient">
+            <option value="" selected>No Patient Selected</option>
+        </select>
 </div>
 
     <!-- Patient Summary View -->
     <div id="patientSummaryView">
         <h2>Patient Summary View</h2>
-        <p>Patient: <span id="selectedPatientName"></span></p>
-        <p>Average Heart Rate: <span id="meanHeartRate"></span></p>
-        <p>Minimum Heart Rate: <span id="minHeartRate"></span></p>
-        <p>Maximum Heart Rate: <span id="maxHeartRate"></span></p>
+        
+        <p>Average Heart Rate: <span id="meanHR"></span></p>
+        <p>Minimum Heart Rate: <span id="minHR"></span></p>
+        <p>Maximum Heart Rate: <span id="maxHR"></span></p>
         <canvas id="barChart"></canvas>
         
     </div>

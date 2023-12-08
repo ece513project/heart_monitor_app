@@ -32,6 +32,7 @@ router.post("/create", function(req, res) {
                 email: req.body.email,
                 password: passwordHash,
                 device: req.body.device
+                
             });
 
             newPatient.save(function(err, patient) {
@@ -49,7 +50,7 @@ router.post("/create", function(req, res) {
     });
        
 });
-
+//FOR TESTING
 router.get('/readAll', function(req, res) {
     Patient.find(function(err, docs) {
         if (err) {
@@ -61,32 +62,42 @@ router.get('/readAll', function(req, res) {
         }
     });
 });
-
-
+//For finding physicians for dropdown
+router.get('/read_all', function(req, res) {
+    Physician.find({}, "first_name last_name email", function(err, docs) {
+        if (err) {
+            let msgStr = `Something wrong....`;
+            res.status(201).json({ message: msgStr });
+        }
+        else {
+            res.status(201).json(docs);
+        }
+    });
+});
 router.post("/logIn", function(req, res) {
     if (!req.body.email || !req.body.password) {
         res.status(401).json({ msg: "Missing email and/or password" });
         return;
     }
-    // Get user from the database
+    // Find the patient in the database
     Patient.findOne({ email: req.body.email }, function(err, patient) {
         
         if (err) {
             res.status(400).send(err);
         }
         else if (!patient) {
-            // Username not in the database
+            // Can't find the patient 
             res.status(401).json({ msg: "Login failure!! No email found." });
         }
         else {
             if (bcrypt.compareSync(req.body.password, patient.password)) {
                 const token = jwt.encode({ email: patient.email }, secret);
-                //update user's last access time
+               
                 patient.lastAccess = new Date();
                 patient.save((err, patient) => {
                     console.log("User's LastAccess has been update.");
                 });
-                // Send back a token that contains the user's username
+                
                 res.status(201).json({ success: true, token: token, msg: "Login success" });
             }
             else {
@@ -123,7 +134,7 @@ router.get("/status", function(req, res) {
 });
 
 router.post("/updateInfo", async function(req, res) {
-    const { _id, first_name, last_name,  password, physician, device } = req.body
+    const { _id, first_name, last_name,  password, physician, device} = req.body
     
     let updateObject = {};
     
@@ -137,59 +148,63 @@ router.post("/updateInfo", async function(req, res) {
     if (device) {
         updateObject.device = device;
     }
+    
     if (password) {
         const passwordHash = bcrypt.hashSync(password, 10);
         updateObject.password = passwordHash;
     }
     if (physician) {
-        await Physician.findOne({ email: physician }, function(err, phys) {
-            if (err) res.status(401).json({ success: false, err: err });
-            else if (phys) {
-                updateObject.physician = phys.email;
-                Patient.findOneAndUpdate({ _id: _id }, { "$set": updateObject }, { new: true }, function(err, doc) {
-                    if (err) {
-                        let msgStr = `Something wrong....`;
-                        return res.status(201).json({ message: msgStr, err: err });
-                    } else {
-                        let msgStr;
-                        if (doc == null) {
-                            msgStr = `Patient info does not exist in DB.`;
-                        } else {
-                            msgStr = `Patient info has been updated.`;
-                        }
+        //await Physician.findOne({ email: physician }, function(err, phys) {
+        //if (err) res.status(401).json({ success: false, err: err });
+        //        else if (phys) {
+        //            updateObject.physician = phys.email;
+        //            Patient.findOneAndUpdate({ _id: _id }, { "$set": updateObject }, { new: true }, function(err, doc) {
+        //                if (err) {
+        //                    let msgStr = `Something wrong....`;
+        //                    return res.status(201).json({ message: msgStr, err: err });
+        //                } else {
+        //                    let msgStr;
+        //                    if (doc == null) {
+        //                        msgStr = `Patient info does not exist in DB.`;
+        //                    } else {
+        //                        msgStr = `Patient info has been updated.`;
+        //                    }
 
-                        return res.status(201).json(msgStr);
-                    }
-                });
-            }
-            else {
-                res.status(401).json({
-                    success: false, msg: `No physician found with email ${physician}`
-                });
-            }
-        });
+        //                    return res.status(201).json(msgStr);
+        //                }
+        //            });
+        //        }
+        //        else {
+        //            res.status(401).json({
+        //                success: false, msg: `No physician found with email ${physician}`
+        //            });
+        //        }
+        //    });
+        //}
+        updateObject.physician = physician;
+        console.log(physician);
     }
     
-    else {
-        console.log(updateObject);
-        console.log(_id);
-        Patient.findOneAndUpdate({ _id: _id }, { "$set":updateObject }, { new: true }, function(err, doc) {
-            if (err) {
-                let msgStr = `Something wrong....`;
-                return res.status(201).json({ message: msgStr, err: err });
+    console.log(updateObject);
+    console.log(_id);
+    Patient.findOneAndUpdate({ _id: _id }, { "$set": updateObject }, { new: true }, function(err, doc) {
+        if (err) {
+            let msgStr = `Something wrong....`;
+            return res.status(201).json({ message: msgStr, err: err });
+        } else {
+            let msgStr;
+            if (doc == null) {
+                msgStr = `Patient info does not exist in DB.`;
             } else {
-                let msgStr;
-                if (doc == null) {
-                    msgStr = `Patient info does not exist in DB.`;
-                } else {
-                    msgStr = `Patient info has been updated.`;
-                }
-
-                return res.status(201).json(msgStr);
+                msgStr = `Patient info has been updated.`;
             }
-        });
+
+            return res.status(201).json(msgStr);
+        }
+    });
+    
      
-    }
+    
     
 });
 

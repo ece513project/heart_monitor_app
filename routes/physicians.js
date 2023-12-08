@@ -48,7 +48,7 @@ router.post("/create", function(req, res) {
     });
 
 });
-
+//FOR TESTING
 router.get('/readAll', function(req, res) {
     Physician.find(function(err, docs) {
         if (err) {
@@ -60,7 +60,7 @@ router.get('/readAll', function(req, res) {
         }
     });
 });
-
+// For physician portal to display patients in dropdown.
 router.get('/read_all', function(req, res) {
     Patient.find({}, "first_name device", function(err, docs) {
         if (err) {
